@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestSharedPreferences">
+        <activity android:name=".activity.PesertaActivity"></activity>
+        <activity android:name=".activity.PengurusActivity" />
+        <activity android:name=".activity.PengajarActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
