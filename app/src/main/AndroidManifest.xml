@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.testsharedpreferences">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestSharedPreferences">
+        android:theme="@style/Theme.TestSharedPreferences"
+        android:usesCleartextTraffic="true">
         <activity android:name=".activity.PesertaActivity"></activity>
         <activity android:name=".activity.PengurusActivity" />
         <activity android:name=".activity.PengajarActivity" />
