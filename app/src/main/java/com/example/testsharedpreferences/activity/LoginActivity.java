@@ -20,6 +20,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//  Job = Role
+
 public class LoginActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
@@ -37,20 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         sessionManager = new SessionManager(LoginActivity.this);
         job = sessionManager.getDataCommit().get(SessionManager.JOB);
 
-        if (sessionManager.isLogin()) {
-            if (job.equalsIgnoreCase("pengajar")) {
-                startActivity(new Intent(getApplicationContext(), PengajarActivity.class));
-                finish();
-
-            } else if (job.equalsIgnoreCase("pengurus")) {
-                startActivity(new Intent(getApplicationContext(), PengurusActivity.class));
-                finish();
-
-            } else if (job.equalsIgnoreCase("peserta")) {
-                startActivity(new Intent(getApplicationContext(), PesertaActivity.class));
-                finish();
-            }
-        }
+        backToJob();
 
         username = findViewById(R.id.et_username);
         password = findViewById(R.id.et_password);
@@ -79,8 +68,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     moveToJob(resultMahasiswa.getRole());
-
-                    Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -100,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                     resultMahasiswa.getPassword(),
                     resultMahasiswa.getRole());
 
+            Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, PengajarActivity.class));
             finish();
 
@@ -109,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                     resultMahasiswa.getPassword(),
                     resultMahasiswa.getRole());
 
+            Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, PengurusActivity.class));
             finish();
 
@@ -118,8 +107,29 @@ public class LoginActivity extends AppCompatActivity {
                     resultMahasiswa.getPassword(),
                     resultMahasiswa.getRole());
 
+            Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, PesertaActivity.class));
             finish();
+
+        } else {
+            Toast.makeText(LoginActivity.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void backToJob() {
+        if (sessionManager.isLogin()) {
+            if (job.equalsIgnoreCase("pengajar")) {
+                startActivity(new Intent(getApplicationContext(), PengajarActivity.class));
+                finish();
+
+            } else if (job.equalsIgnoreCase("pengurus")) {
+                startActivity(new Intent(getApplicationContext(), PengurusActivity.class));
+                finish();
+
+            } else if (job.equalsIgnoreCase("peserta")) {
+                startActivity(new Intent(getApplicationContext(), PesertaActivity.class));
+                finish();
+            }
         }
     }
 }

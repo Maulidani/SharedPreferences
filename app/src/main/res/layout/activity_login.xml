@@ -67,7 +67,7 @@
 
         <EditText
             android:id="@+id/et_password"
-            android:hint="Username"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColorHint="@color/purple_700"
             android:layout_marginHorizontal="16dp"
